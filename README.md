@@ -1,1 +1,0 @@
-# ianmcgettigan.github.io
