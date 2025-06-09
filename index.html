@@ -3,6 +3,30 @@
 <head>
  <meta name="viewport" content="width=device-width, initial-scale=1"> <meta charset="UTF-8">
   <title>Ian McGettigan</title>
+
+  <!-- Dark/light mode -->
+  <style>
+    :root {
+      --bg: #fff; --fg: #000;
+    }
+    [data-theme="dark"] {
+      --bg: #111; --fg: #eee;
+    }
+    body {
+      background: var(--bg);
+      color: var(--fg);
+      transition: background .3s, color .3s;
+    }
+    .toggle {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+  </style>
 </head>
 <body>
   <h1>Ian McGettigan</h1>
