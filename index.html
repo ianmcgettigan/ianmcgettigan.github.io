@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
- <meta name="viewport" content="width=device-width, initial-scale=1"> <meta charset="UTF-8">
+  <meta charset="UTF-8">
   <title>Ian McGettigan</title>
 
-  <!-- Dark/light mode -->
+  <!-- Dark/light mode CSS -->
   <style>
     :root {
       --bg: #fff; --fg: #000;
@@ -27,12 +27,30 @@
       cursor: pointer;
     }
   </style>
+  <!-- end dark/light mode CSS -->
 </head>
-<body>
+<body data-theme="">
+  <!-- Dark/light mode switch -->
+  <button class="toggle" aria-label="Toggle dark mode">🌓</button>
+
   <h1>Ian McGettigan</h1>
   <p>
     Here is a test file upload:
-    <a href="/assets/CoursePaper_IanMcGettigan2091280.pdf">click here</a>
+    <a href="/assets/CoursePaper_IanMcGettigan2091280.pdf">
+      Click to download 
+    </a>
   </p>
+
+  <!-- Dark/light mode script -->
+  <script>
+    const btn = document.querySelector(".toggle");
+    btn.addEventListener("click", () => {
+      const next = document.documentElement.getAttribute("data-theme") === "dark"
+        ? ""
+        : "dark";
+      document.documentElement.setAttribute("data-theme", next);
+    });
+  </script>
+  <!-- end dark/light mode script -->
 </body>
 </html>
