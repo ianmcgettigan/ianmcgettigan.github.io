@@ -3,54 +3,109 @@
 <head>
   <meta charset="UTF-8">
   <title>Ian McGettigan</title>
-
-  <!-- Dark/light mode CSS -->
   <style>
     :root {
-      --bg: #fff; --fg: #000;
+      --fg: #222;
+      --link: #1a73e8;
+      --container-bg: rgba(255,255,255,0.85);
     }
-    [data-theme="dark"] {
-      --bg: #111; --fg: #eee;
+    html[data-theme="dark"] {
+      --fg: #c9d1d9;
+      --link: #58a6ff;
+      --container-bg: rgba(13,17,23,0.85);
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
     body {
-      background: var(--bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 1rem;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
       color: var(--fg);
+      background: linear-gradient(135deg, #eef2f5, #f8fafc);
       transition: background .3s, color .3s;
+    }
+    html[data-theme="dark"] body {
+      background: linear-gradient(135deg, #171a21, #0d1117);
+    }
+    .container {
+      background: var(--container-bg);
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+      max-width: 600px;
+      width: 100%;
+    }
+    h1 {
+      font-family: Georgia, serif;
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+    p {
+      margin-bottom: 1rem;
+      line-height: 1.5;
+    }
+    a {
+      color: var(--link);
+      text-decoration: none;
+      position: relative;
+      transition: color .3s;
+    }
+    a::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -2px;
+      width: 100%;
+      height: 2px;
+      background: var(--link);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform .3s;
+    }
+    a:hover::after {
+      transform: scaleX(1);
     }
     .toggle {
       position: fixed;
       top: 1rem;
       right: 1rem;
-      background: none;
+      width: 2.5rem;
+      height: 2.5rem;
+      background: var(--container-bg);
       border: none;
-      font-size: 1.5rem;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
       cursor: pointer;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+      transition: background .3s;
     }
   </style>
-  <!-- end dark/light mode CSS -->
 </head>
 <body data-theme="">
-  <!-- Dark/light mode switch -->
   <button class="toggle" aria-label="Toggle dark mode">🌓</button>
-
-  <h1>Ian McGettigan</h1>
-  <p>
-    Here is a test file upload:
-    <a href="/assets/CoursePaper_IanMcGettigan2091280.pdf">
-      Click to download 
-    </a>
-  </p>
-
-  <!-- Dark/light mode script -->
+  <div class="container">
+    <h1>Ian McGettigan</h1>
+    <p>
+      Here is an example file upload:
+      <a href="/assets/CoursePaper_IanMcGettigan2091280.pdf">Download
+          here</a>
+    </p>
+  </div>
   <script>
-    const btn = document.querySelector(".toggle");
-    btn.addEventListener("click", () => {
-      const next = document.documentElement.getAttribute("data-theme") === "dark"
-        ? ""
-        : "dark";
-      document.documentElement.setAttribute("data-theme", next);
+    const btn = document.querySelector('.toggle');
+    btn.addEventListener('click', () => {
+      const next = document.documentElement.getAttribute('data-theme') === 'dark' ? '' : 'dark';
+      document.documentElement.setAttribute('data-theme', next);
     });
   </script>
-  <!-- end dark/light mode script -->
 </body>
 </html>
