@@ -1,139 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Ian McGettigan</title>
-  <style>
-    /* reset & full‐screen setup */
-    * { margin:0; padding:0; box-sizing:border-box; }
-    body {
-      overflow:hidden;
-      height:100vh;
-      position:relative;
-      font-family:sans-serif;
-    }
-    /* both canvases cover the background */
-    #bg-canvas, #draw-canvas {
-      position:fixed; top:0; left:0;
-      width:100%; height:100%;
-      pointer-events:none;
-      z-index:0;
-    }
-    /* feel free to copy the code it's pretty fun ~/>!!!! */
-    #content {
-      position:static;
-      display:inline-block;
-      z-index:1;
-      padding:1rem;
-    }
-    /* the toggle button */
-    #toggle-btn {
-      position:fixed;
-      top:1rem; right:1rem;
-      z-index:2;
-      padding:0.5rem 1rem;
-      cursor:pointer;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Ian McGettigan</title>
 </head>
 <body>
-  <button id="toggle-btn">Click me!</button>
-
-  <canvas id="bg-canvas"></canvas>
-  <canvas id="draw-canvas"></canvas>
-
-  <div id="content">
-    <h1>Ian McGettigan</h1>
     <p>
-    This is my website. There is not much to see here—yet. 
+    <a href="/assets/Thesis.pdf" download>
+        BSc Economics Thesis
+    </a>
     </p>
-  </div>
-
-  <script>
-  const toggle = document.getElementById('toggle-btn');
-  const bgCanvas = document.getElementById('bg-canvas');
-  const bgCtx    = bgCanvas.getContext('2d');
-  const drawCanvas = document.getElementById('draw-canvas');
-  const dCtx       = drawCanvas.getContext('2d');
-  const content    = document.getElementById('content');
-
-  let mode = false,
-      bgAnimId,
-      contentAnimId,
-      hue = 0,
-      drawing = false,
-      x, y, dx, dy, maxX, maxY;
-
-  function resize() {
-    bgCanvas.width   = drawCanvas.width   = window.innerWidth;
-    bgCanvas.height  = drawCanvas.height  = window.innerHeight;
-  }
-  window.addEventListener('resize', resize);
-  resize();
-
-  function animateBg() {
-    const t = Date.now()/1000;
-    const w = bgCanvas.width, h = bgCanvas.height;
-    const cx = w/2 + Math.sin(t/3)*w/4;
-    const cy = h/2 + Math.cos(t/2)*h/4;
-    const rad = Math.hypot(w,h);
-    const grad = bgCtx.createRadialGradient(cx, cy, 0, cx, cy, rad);
-    grad.addColorStop(0, `hsl(${(t*40)%360},80%,60%)`);
-    grad.addColorStop(1, `hsl(${(t*40+120)%360},80%,60%)`);
-    bgCtx.fillStyle = grad;
-    bgCtx.fillRect(0, 0, w, h);
-    bgAnimId = requestAnimationFrame(animateBg);
-  }
-
-  document.addEventListener('mousedown', e => {
-    if (!mode) return;
-    drawing = true;
-    dCtx.beginPath();
-    dCtx.moveTo(e.clientX, e.clientY);
-  });
-  document.addEventListener('mouseup', () => drawing = false);
-  document.addEventListener('mousemove', e => {
-    if (!mode || !drawing) return;
-    dCtx.strokeStyle = `hsl(${hue},80%,60%)`;
-    dCtx.lineWidth = 3;
-    dCtx.lineCap = 'round';
-    dCtx.lineTo(e.clientX, e.clientY);
-    dCtx.stroke();
-    hue = (hue + 1) % 360;
-  });
-
-  function animateContent() {
-    x += dx; y += dy;
-    if (x <= 0 || x >= maxX) dx = -dx;
-    if (y <= 0 || y >= maxY) dy = -dy;
-    content.style.left = x + 'px';
-    content.style.top  = y + 'px';
-    contentAnimId = requestAnimationFrame(animateContent);
-  }
-
-  toggle.addEventListener('click', () => {
-    mode = !mode;
-    if (mode) {
-      animateBg();
-      dCtx.clearRect(0,0,drawCanvas.width,drawCanvas.height);
-      const rect = content.getBoundingClientRect();
-      maxX = window.innerWidth  - rect.width;
-      maxY = window.innerHeight - rect.height;
-      x = Math.random()*maxX;
-      y = Math.random()*maxY;
-      dx = (Math.random()>0.5 ? 1 : -1) * 2;
-      dy = (Math.random()>0.5 ? 1 : -1) * 2;
-      content.style.position = 'absolute';
-      animateContent();
-    } else {
-      cancelAnimationFrame(bgAnimId);
-      bgCtx.clearRect(0,0,bgCanvas.width,bgCanvas.height);
-      cancelAnimationFrame(contentAnimId);
-      content.style.position = '';
-      content.style.left     = '';
-      content.style.top      = '';
-    }
-  });
-  </script>
 </body>
 </html>
