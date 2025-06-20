@@ -1,0 +1,113 @@
+\documentclass[twoside,11pt,a4paper]{article}
+
+%\usepackage{tgschola}
+%\usepackage[T1]{fontenc}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath, amssymb, multirow, array, soul, xcolor}
+\usepackage{booktabs, tabularx, makecell}
+\usepackage{marvosym}
+\usepackage{nameref}
+\usepackage{pdflscape}
+\usepackage{adjustbox}
+\usepackage{rotating}
+\usepackage{longtable}
+\setulcolor{red}
+\usepackage{graphicx}
+\usepackage[hidelinks]{hyperref}
+\usepackage{setspace}
+% citations
+\usepackage{natbib}
+\bibliographystyle{apalike}
+\usepackage{fancyhdr}
+% section formatting
+\renewcommand{\thesection}{\Roman{section}}
+
+\usepackage{titlesec}
+
+\titleformat{\section}
+  {\centering\scshape\large}     
+  {\thesection.}                
+  {0.25em}{}                   
+\titlespacing*{\section}{0pt}{1em plus .2ex}{1em plus .2ex}
+
+\renewcommand{\thesubsection}{\thesection\Alph{subsection}.}
+\titleformat{\subsection}{\itshape}{\thesubsection}{0.25em}{}
+
+% Table formatting %
+\usepackage{threeparttable}
+\usepackage{float}
+\usepackage{caption}
+\floatstyle{plaintop}
+\restylefloat{table}
+\DeclareCaptionFont{sc}{\scshape}
+\captionsetup[table]{font={sc,small}, labelfont=sc, textfont=sc}
+\renewcommand{\thetable}{\Roman{table}}
+% figure formatting %
+\usepackage{float}
+\floatstyle{plaintop}
+\restylefloat{figure}
+\restylefloat{table}
+\usepackage{caption}
+\DeclareCaptionFont{sc}{\scshape}
+\captionsetup{
+  font={sc,small},
+  labelfont=sc,
+  textfont=sc
+}
+\renewcommand{\thefigure}{\Roman{figure}}
+
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+% Front matter %
+\title{ON THE DETERMINANTS OF TRUST: CAUSAL EVIDENCE FROM KENYA}
+\author{\textit{By} \scshape \normalsize Ian McGettigan\thanks{
+         SNR: 2091280 \\
+         ANR: u131046
+     } \\ 
+     \textit{Supervisor} \scshape \normalsize Till Wicker \\
+        \\ BSc Thesis in Economics \\ 
+    Word count: 6788}
+\date{\normalsize June 17, 2025}
+% Header formatting %
+\fancyhead[LE]{\footnotesize \thepage}
+\fancyhead[CE]{\itshape \footnotesize TILBURG UNIVERSITY}
+\fancyhead[CO]{\itshape \footnotesize ON THE DETERMINANTS OF TRUST}
+\fancyhead[RE]{}
+\fancyhead[LO]{}
+\fancyhead[RO]{\footnotesize \thepage}
+\fancyfoot[C]{}
+\renewcommand{\headrulewidth}{0pt}
+
+\pagestyle{fancy}
+
+\begin{document}
+
+\maketitle
+
+\doublespacing
+
+\thispagestyle{empty} %rm page number and fancyhdr
+
+\newpage
+
+\input{sections/intro}
+
+\input{sections/lit}
+
+\input{sections/data}
+
+\input{sections/method}
+
+\input{sections/results}
+
+\include{sections/discussion}
+
+\input{sections/conclusion}
+
+\newpage
+
+\bibliography{references}
+
+\include{sections/Appendix}
+
+\end{document}
