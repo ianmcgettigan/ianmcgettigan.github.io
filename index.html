@@ -1,113 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
-<title>Ian McGettigan</title>
-<style>
-  body {
-    margin: 0;
-    height: 100vh;
-    background: url('starryNight.jpg') no-repeat center/cover;
-    overflow: hidden;
-    position: relative;
-    font-family: sans-serif;
-    color: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-  }
-
-  .horizon {
-    position: absolute;
-    left: 0; right: 0; bottom: 0;
-    height: 20vh;
-    background: linear-gradient(to top, #000 0%, rgba(0,0,0,0) 100%);
-    pointer-events: none;
-  }
-
-  h1 {
-    font-size: 4rem;
-    margin: 0;
-    z-index: 1;
-  }
-
-  .btn {
-    position: relative;
-    display: inline-block;
-    padding: 0.6rem 1.4rem;
-    text-decoration: none;
-    font-size: 1rem;
-    border-radius: 999px;
-    background: rgba(0,0,0,0.5);
-    z-index: 1;
-    color: #fff;
-  }
-
-  .btn span {
-    position: relative;
-    z-index: 1;
-  }
-
-  .btn svg {
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    pointer-events: none;
-  }
-
-  /* golden glowing border */
-  .btn svg rect {
-    fill: none;
-    stroke: #FFD700;
-    stroke-width: 2;
-    rx: 999; ry: 999;
-    filter: drop-shadow(0 0 8px rgba(255,215,0,0.8))
-            drop-shadow(0 0 4px rgba(255,215,0,0.6));
-  }
-
-  #blob {
-    position: absolute;
-    width: 60px;
-    height: 60px;
-    pointer-events: none;
-    background: rgba(255,255,255,0.1);
-    border-radius: 50%;
-    backdrop-filter: blur(20px);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    transform: translate(-50%, -50%);
-    z-index: 0;
-  }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Ian McGettigan</title>
 </head>
 <body>
-  <h1>Ian McGettigan</h1>
-  <a href="https://github.com/YourUsername" class="btn" target="_blank" rel="noopener">
-    <span>GitHub</span>
-    <svg viewBox="0 0 120 40" preserveAspectRatio="none">
-      <rect x="1" y="1" width="118" height="38"/>
-    </svg>
-  </a>
-  <div class="horizon"></div>
-  <div id="blob"></div>
-
-  <script>
-    const blob = document.getElementById('blob');
-    let hideTimer;
-    document.addEventListener('mousemove', e => {
-      blob.style.left = e.clientX + 'px';
-      blob.style.top  = e.clientY + 'px';
-      blob.style.opacity = '1';
-      clearTimeout(hideTimer);
-      hideTimer = setTimeout(() => { blob.style.opacity = '0'; }, 500);
-    });
-    document.addEventListener('mouseout', e => {
-      if (!e.relatedTarget || e.relatedTarget.nodeName === 'HTML') {
-        blob.style.opacity = '0';
-      }
-    });
-  </script>
+    <p>
+    Ian McGettigan.
+    </p>
 </body>
 </html>
