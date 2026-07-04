@@ -6,7 +6,8 @@
 }
 
 html {
-    background-image: linear-gradient(to bottom right, #69ff5e, #0b6120);
+    background-color: #05150d;
+    background-image: radial-gradient(ellipse at 50% 35%, #103823 0%, #05150d 70%);
 }
 
 body {
@@ -23,7 +24,8 @@ body {
     height: 100vh;
     z-index: -1;
 }
-.page{
+
+.page {
     position: relative;
     z-index: 1;
     min-height: 100dvh;
@@ -32,71 +34,94 @@ body {
     align-content: center;
 
     padding: 2rem;
-    padding-bottom: 10rem; /* increase to push higher, decrease to lower */
-}
-.name {
-    font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-    color: white;
-    font-size: clamp(2.2rem, 6vw, 4rem);
-    line-height: 1.1;
-    margin-bottom: 0.75rem;
+    padding-bottom: 10rem; 
 }
 
-.bio{
+.name {
+    font-family: "Cormorant Garamond", "Didot", "Bodoni MT", Georgia, serif;
+    font-weight: 500;
+    color: #e9f0e9;
+    font-size: clamp(2.4rem, 6vw, 4.2rem);
+    line-height: 1.1;
+    letter-spacing: 0.09em;
+    text-align: center;
+    text-shadow: 0 0 40px rgba(20, 80, 45, 0.6);
+}
+
+.name::after {
+    content: "";
+    display: block;
+    width: min(18rem, 60vw);
+    height: 1px;
+    margin: 1.1rem auto 0;
+    background: linear-gradient(
+        to right,
+        transparent,
+        rgba(196, 172, 110, 0.55),
+        transparent
+    );
+}
+
+.bio {
     margin-top: 1rem;
     max-width: 60ch;
-    font-family: Display, sans-serif; 
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-style: italic;
     font-size: clamp(1rem, 2.2vw, 1.35rem);
-    font-weight: 300;
-    color: rgba(255,255,255,0.85);
-    line-height: 1.5;
+    font-weight: 400;
+    color: rgba(220, 232, 222, 0.75);
+    line-height: 1.6;
     text-align: center;
+    letter-spacing: 0em;
 }
+
 .links {
-  position: fixed;
-  left: 50%;
-  bottom: 2rem;
-  transform: translateX(-50%);
+    position: fixed;
+    left: 50%;
+    bottom: 2rem;
+    transform: translateX(-50%);
 
-  display: flex;
-  gap: 1.2rem;
-  justify-content: center;
-  align-items: center;
+    display: flex;
+    gap: 1.4rem;
+    justify-content: center;
+    align-items: center;
 
-  z-index: 2;
+    z-index: 2;
 }
 
-.link img{
-    width: 2.2rem;
+.link img {
+    width: 2rem;
     height: auto;
-    opacity: 0.75;
-    transition: opacity 0.2s ease, transform 0.2s ease;
+    /* icons render as pale bone-white regardless of their source color */
+    filter: brightness(0) invert(0.92);
+    opacity: 0.55;
+    transition: opacity 0.25s ease, transform 0.25s ease;
 }
 
-.link:hover img{
+.link:hover img {
     opacity: 1;
     transform: translateY(-2px);
 }
 
 .content {
-  max-width: 60ch;
-  margin: 2.5rem auto 4rem;
-  padding: 0 2rem;
-  text-align: center;
-  color: white;
-  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    max-width: 60ch;
+    margin: 2.5rem auto 4rem;
+    padding: 0 2rem;
+    text-align: center;
+    color: #e9f0e9;
+    font-family: "Cormorant Garamond", Georgia, serif;
 }
 
 .content h2 {
-  font-size: clamp(1.4rem, 3vw, 2rem);
-  font-weight: 600;
-  line-height: 1.2;
-  margin-bottom: 0.75rem;
+    font-size: clamp(1.4rem, 3vw, 2rem);
+    font-weight: 600;
+    line-height: 1.2;
+    margin-bottom: 0.75rem;
 }
 
 .content p {
-  font-size: clamp(1rem, 2.2vw, 1.35rem);
-  font-weight: 300;
-  line-height: 1.5;
-  color: rgba(255, 255, 255, 0.85);
+    font-size: clamp(1rem, 2.2vw, 1.35rem);
+    font-weight: 400;
+    line-height: 1.6;
+    color: rgba(220, 232, 222, 0.8);
 }
