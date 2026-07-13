@@ -6,23 +6,18 @@
 }
 
 html {
-    background-color: #05150d;
-    background-image: radial-gradient(ellipse at 50% 35%, #103823 0%, #05150d 70%);
+    /* dimmed warm paper: soft in daylight, not glaring at night */
+    background-color: #e6e3db;
+    background-image: radial-gradient(ellipse at 50% 30%, #ebe8e1 0%, #dedad1 100%);
+    min-height: 100%;
 }
 
 body {
     width: 100%;
     min-height: 100dvh;
     overflow-x: hidden;
-}
-
-#canvas {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    z-index: -1;
+    font-family: "EB Garamond", Georgia, "Times New Roman", serif;
+    color: #2e2c27;
 }
 
 .page {
@@ -34,30 +29,28 @@ body {
     align-content: center;
 
     padding: 2rem;
-    padding-bottom: 10rem; 
+    padding-bottom: 10rem;
 }
 
 .name {
-    font-family: "Cormorant Garamond", "Didot", "Bodoni MT", Georgia, serif;
     font-weight: 500;
-    color: #e9f0e9;
-    font-size: clamp(2.4rem, 6vw, 4.2rem);
+    color: #2e2c27;
+    font-size: clamp(2.4rem, 6vw, 4rem);
     line-height: 1.1;
-    letter-spacing: 0.09em;
+    letter-spacing: 0.06em;
     text-align: center;
-    text-shadow: 0 0 40px rgba(20, 80, 45, 0.6);
 }
 
 .name::after {
     content: "";
     display: block;
-    width: min(18rem, 60vw);
+    width: min(16rem, 55vw);
     height: 1px;
     margin: 1.1rem auto 0;
     background: linear-gradient(
         to right,
         transparent,
-        rgba(196, 172, 110, 0.55),
+        rgba(120, 105, 70, 0.45),
         transparent
     );
 }
@@ -65,14 +58,12 @@ body {
 .bio {
     margin-top: 1rem;
     max-width: 60ch;
-    font-family: "Cormorant Garamond", Georgia, serif;
     font-style: italic;
-    font-size: clamp(1rem, 2.2vw, 1.35rem);
+    font-size: clamp(1rem, 2.2vw, 1.3rem);
     font-weight: 400;
-    color: rgba(220, 232, 222, 0.75);
+    color: rgba(46, 44, 39, 0.75);
     line-height: 1.6;
     text-align: center;
-    letter-spacing: 0em;
 }
 
 .links {
@@ -92,14 +83,14 @@ body {
 .link img {
     width: 2rem;
     height: auto;
-    /* icons render as pale bone-white regardless of their source color */
-    filter: brightness(0) invert(0.92);
+    /* icons render as dark ink regardless of their source color */
+    filter: brightness(0) invert(0.18);
     opacity: 0.55;
     transition: opacity 0.25s ease, transform 0.25s ease;
 }
 
 .link:hover img {
-    opacity: 1;
+    opacity: 0.9;
     transform: translateY(-2px);
 }
 
@@ -108,8 +99,6 @@ body {
     margin: 2.5rem auto 4rem;
     padding: 0 2rem;
     text-align: center;
-    color: #e9f0e9;
-    font-family: "Cormorant Garamond", Georgia, serif;
 }
 
 .content h2 {
@@ -120,8 +109,8 @@ body {
 }
 
 .content p {
-    font-size: clamp(1rem, 2.2vw, 1.35rem);
+    font-size: clamp(1rem, 2.2vw, 1.3rem);
     font-weight: 400;
     line-height: 1.6;
-    color: rgba(220, 232, 222, 0.8);
+    color: rgba(46, 44, 39, 0.8);
 }
